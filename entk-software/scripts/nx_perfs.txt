@@ -1,0 +1,16 @@
+pipes: 1, stages: 1, tasks: 1, time: 0.000247001647949
+pipes: 1, stages: 1, tasks: 10, time: 0.000108957290649
+pipes: 1, stages: 1, tasks: 100, time: 0.000741004943848
+pipes: 1, stages: 1, tasks: 1000, time: 0.00735402107239
+pipes: 1, stages: 1, tasks: 10000, time: 0.0983500480652
+pipes: 1, stages: 1, tasks: 100000, time: 0.837163925171
+pipes: 1, stages: 1, tasks: 100, time: 0.000762939453125
+pipes: 1, stages: 10, tasks: 100, time: 0.00690698623657
+pipes: 1, stages: 100, tasks: 100, time: 0.073098897934
+pipes: 1, stages: 1000, tasks: 100, time: 0.81164598465
+pipes: 1, stages: 10000, tasks: 100, time: 9.66454410553
+pipes: 1, stages: 10, tasks: 10, time: 0.000909090042114
+pipes: 10, stages: 10, tasks: 10, time: 0.00902318954468
+pipes: 100, stages: 10, tasks: 10, time: 0.081934928894
+pipes: 1000, stages: 10, tasks: 10, time: 1.05419778824
+pipes: 10000, stages: 10, tasks: 10, time: 11.7424149513
