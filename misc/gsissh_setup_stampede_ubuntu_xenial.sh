@@ -21,6 +21,7 @@ sudo apt-get install ca-policy-egi-core
 ## Installing "ca-policy-egi-core" - 2
 #curl https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3 | sudo apt-key add -
 #sudo echo "deb http://repository.egi.eu/sw/production/cas/1/current egi-igtf core" >> /etc/apt/sources.list
+#sudo apt-get update
 #sudo apt-get install ca-policy-egi-core
 
 # Remove local certificates - caution
