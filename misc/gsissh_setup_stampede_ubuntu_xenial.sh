@@ -31,5 +31,11 @@ sudo apt-get install ca-policy-egi-core
 myproxy-logon -s myproxy.xsede.org -l vivek91
 #gsissh -p 2222 vivek91@stampede.tacc.xsede.org
 
-
 # If gsissh is not found install gsi-openssh-clients
+
+# Install IGTF certificates. These are required to make myproxy-logon to work with XSEDE (and many other DCIs)
+cd /etc/apt/sources.list.d 
+sudo touch igtf-accredited.list
+sudo echo "deb http://dist.eugridpma.info/distribution/igtf/current igtf accredited" >> igtf-accredited.list
+sudo apt-get update
+sudo apt-get install ca-*
