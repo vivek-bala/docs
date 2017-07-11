@@ -1,6 +1,10 @@
 #!/bin/sh
 
-touch /etc/apt/sources.list.d/globus-toolkit-6-stable-xenial.list
+## Installing "globus-proxy-utils" "globus-simple-ca"		
+sudo echo "deb http://toolkit.globus.org/ftppub/gt6/stable/deb xenial contrib" >> /etc/apt/sources.list.d/globus-toolkit-6-stable-xenial.list		
+sudo echo "deb-src http://toolkit.globus.org/ftppub/gt6/stable/deb xenial contrib" >> /etc/apt/sources.list.d/globus-toolkit-6-stable-xenial.list		
+sudo apt-get update		
+sudo apt-get install globus-proxy-utils globus-simple-ca
 
 ## Installing "ca-policy-egi-core" - 1
 cd
