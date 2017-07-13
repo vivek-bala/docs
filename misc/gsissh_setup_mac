@@ -1,0 +1,23 @@
+1. Follow the instructions at http://toolkit.globus.org/toolkit/docs/latest-stable/admin/install/#_installing_the_toolkit_on_mac_os_x
+to install the package
+2. Run the following commands to download the xsede certificates
+
+```
+mkdir $HOME/.globus
+mkdir $HOME/.globus/certificates
+cd $HOME/.globus/certificates
+wget https://software.xsede.org/security/xsede-certs.tar.gz
+tar xvf xsede-certs.tar.gz
+```
+
+3. Get the temporary certificate
+
+```
+myproxy-logon -s myproxy.xsede.org -l <username>
+```
+
+4. Login to stampede
+
+```
+gsissh -p 2222 stampede.tacc.xsede.org
+```
