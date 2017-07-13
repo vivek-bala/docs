@@ -21,3 +21,10 @@ myproxy-logon -s myproxy.xsede.org -l <username>
 ```
 gsissh -p 2222 stampede.tacc.xsede.org
 ```
+
+5. Setup env variable
+
+```
+which gsissh
+export GLOBUS_LOCATION=<path to gsissh> # if different from /usr/bin/gsissh
+```
