@@ -1,15 +1,37 @@
-module swap PrgEnv-pgi/5.2.82 PrgEnv-gnu/5.2.82
-module load cmake boost
-module load fftw
-module use --append /lustre/atlas/world-shared/csc230/openmpi/modules/
-module load openmpi/2017_09_18_539f71d
+# Note: The following compilation produces a binary that only works on the compute nodes.
 
+cd /ccs/proj/bip149         # Read only from compute nodes
 wget ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.1.4.tar.gz
 tar xf gromacs-5.1.4.tar.gz
 
-mkdir /lustre/atlas/scratch/vivekb/bip149/gromacs-openmpi
+mkdir gromacs_openmpi_2017_09_18
 cd gromacs-5.1.4
 
-cmake -DBUILD_SHARED_LIBS=OFF -DGMX_BUILD_SHARED_EXE=OFF -DGMX_MPI=ON -DGMX_SIMD=AVX_128_FMA -DGMX_FFT_LIBRARY=fftw3 -DGMX_DOUBLE=OFF -DFFTWF_INCLUDE_DIR=$FFTW_INC -DFFTWF_LIBRARY=$FFTW_DIR/libfftw3f.a -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpiCC -DCMAKE_SKIP_RPATH=YES -DCMAKE_INSTALL_PREFIX=/lustre/atlas/scratch/vivekb/bip149/gromacs-openmpi
-make 
+module purge
+module load PrgEnv-gnu/5.2.82 cmake3 boost
+module load dynamic-link
+module use --append /lustre/atlas/world-shared/csc230/openmpi/modules/
+module load openmpi/2017_09_18_539f71d
+
+cmake \
+  -DCMAKE_C_COMPILER=mpicc \
+  -DCMAKE_CXX_COMPILER=mpiCC \
+  -DGMX_MPI=on \
+  -DCMAKE_INSTALL_PREFIX=/ccs/proj/bip149/gromacs_openmpi_2017_09_18 \
+  -DBUILD_SHARED_LIBS=ON \
+  -DGMX_BUILD_OWN_FFTW=ON \
+  -DGMX_SIMD=AVX_128_FMA
+  
+make
 make install
+
+
+## The following is to test the installation
+
+qsub -I -A bip149 -q batch -l nodes=1,walltime=01:00:00
+cd $MEMBERWORK/bip149
+module swap PrgEnv-pgi PrgEnv-gnu
+module load fftw boost
+export LD_LIBRARY_PATH="/ccs/proj/bip149/gromacs_openmpi_2017_09_18/lib64:$LD_LIBRARY_PATH"
+export PMI_NO_FORK=True
+aprun /ccs/proj/bip149/gromacs_openmpi_2017_09_18/bin/gmx_mpi --help # This should produce a gromacs error saying illegal argument
