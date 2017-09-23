@@ -24,7 +24,7 @@ cmake \
   -DGMX_USE_RDTSCP=OFF \
   -DFFTWF_LIBRARY=$FFTW_DIR/libfftw3f.a \
   -DFFTWF_INCLUDE_DIR=$FFTW_INC
-  ..
+  
 make
 make install
 
