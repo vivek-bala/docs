@@ -33,7 +33,8 @@ sudo apt-get install ca-policy-egi-core
 #rm -r $HOME/.globus/certificates
 
 # Setup myproxy, should prompt for password. If successful, run following commented command.
-myproxy-logon -s myproxy.xsede.org -l vivek91
+myproxy-logon -s myproxy.xsede.org -l vivek91    # XSEDE Certificates
+myproxy-logon -s tfca.ncsa.illinois.edu -p 7512 -l balasubr    # Blue Waters certificate
 #gsissh -p 2222 vivek91@stampede.tacc.xsede.org
 
 # If gsissh is not found install gsi-openssh-clients
