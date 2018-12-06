@@ -1,0 +1,6 @@
+# List all unreachable and lost-found commits - useful when searching for a particular
+# commit
+for c in `git fsck --full --no-reflogs --unreachable --lost-found | cut -f 3 -d ' '`; do git log -n 1 --pretty=oneline $c; done
+
+# Write all unreachable and lost-found commit contents to a file
+for c in `git fsck --full --no-reflogs --unreachable --lost-found | cut -f 3 -d ' '`; do $c"; git show $c > $c.diff; done
